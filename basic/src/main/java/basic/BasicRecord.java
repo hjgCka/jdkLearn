@@ -1,4 +1,4 @@
-package com.hjg.basic;
+package basic;
 
 import java.util.Map;
 

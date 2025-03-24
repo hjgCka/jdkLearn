@@ -1,4 +1,4 @@
-package com.hjg.basic;
+package basic;
 
 import org.junit.jupiter.api.Test;
 
