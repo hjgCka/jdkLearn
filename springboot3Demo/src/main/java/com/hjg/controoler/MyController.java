@@ -15,6 +15,7 @@ public class MyController {
 
     @RequestMapping("/hello")
     public String hello() {
+        System.out.println(MyController.class.getClassLoader().toString());
         return "hello Jack";
     }
 
