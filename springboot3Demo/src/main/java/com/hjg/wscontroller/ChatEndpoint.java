@@ -12,6 +12,9 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 这里还可以加上@Scope("prototype")注解，每次获取bean时都新建一个，同时能使用spring的能力。
+ * 不过阅读了一下代码，似乎没有加上这个注解的，虽然加上会更符合tomcat处理websocket连接的行为。
+ * 如果不加上注解，成员变量需要是线程安全的。
  * @Description
  * @Author hjg
  * @Date 2025-05-27 20:17
