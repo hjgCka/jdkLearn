@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author hjg
  * @Date 2025-05-27 20:17
  */
-@ServerEndpoint(value = "/ws/chat/{userId}")
+@ServerEndpoint(value = "/ws/chat/{userId}", configurator = SpringEndpointConfigurator.class)
 @Component
 public class ChatEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(ChatEndpoint.class);
@@ -41,6 +41,7 @@ public class ChatEndpoint {
      */
     @OnOpen
     public void start(Session session, @PathParam("userId") String userId, @PathParam("username") String username) {
+        logger.info("建立websocket连接");
         this.session = session;
         connections.add(this);
         try {
