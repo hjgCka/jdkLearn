@@ -1,10 +1,12 @@
 package com.hjg.wscontroller;
 
+import com.hjg.service.PersonService;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -19,10 +21,17 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author hjg
  * @Date 2025-05-27 20:17
  */
-@ServerEndpoint(value = "/ws/chat/{userId}", configurator = SpringEndpointConfigurator.class)
+@ServerEndpoint(value = "/ws/chat/{userId}",
+        configurator = SpringEndpointConfigurator.class,
+        encoders = {EndpointEncoder.class},
+        decoders = {EndpointDecoder.class}
+)
 @Component
 public class ChatEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(ChatEndpoint.class);
+
+    @Autowired
+    private PersonService personService;
 
     // 客户端计数器
     private static final AtomicInteger counter = new AtomicInteger(0);
@@ -43,8 +52,8 @@ public class ChatEndpoint {
      * @param session
      */
     @OnOpen
-    public void start(Session session, @PathParam("userId") String userId, @PathParam("username") String username) {
-        logger.info("建立websocket连接");
+    public void start(Session session, @PathParam("userId") String userId) {
+        logger.info("建立websocket连接, userId={}, person={}", userId, personService.findById(2));
         this.session = session;
         connections.add(this);
         try {
@@ -73,12 +82,13 @@ public class ChatEndpoint {
      * @param message
      */
     @OnMessage
-    public void message(String message, @PathParam("userId") String userId, Session session) {
+    public void message(WsMsg message, @PathParam("userId") String userId, Session session) {
         logger.info("收到消息, userId={}, message={}", userId, message);
         for(ChatEndpoint client : connections) {
             synchronized (client) {
                 try {
-                    client.session.getBasicRemote().sendText(message);
+                    //配置了编码器之后，可以不再用sendText方法
+                    client.session.getBasicRemote().sendObject(message);
                 } catch (Exception e) {
                     logger.error("发送客户端消息时异常", e);
                 }
