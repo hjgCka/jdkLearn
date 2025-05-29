@@ -18,6 +18,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,15 @@ import java.util.List;
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+
+    /**
+     * 静态资源的配置 - 使得可以从磁盘、类路径中读取 Html、图片、视频、音频等
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/ws-client/**")
+                .addResourceLocations("classpath:/");
+    }
 
     @Bean
     public CorsFilter corsFilter() {

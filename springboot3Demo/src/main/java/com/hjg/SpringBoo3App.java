@@ -20,6 +20,12 @@ public class SpringBoo3App {
         return () -> 42;
     }
 
+    /**
+     * 由于配置了webMvc的资源处理器，因此可以用如下路径，访问类路径下的html
+     * http://localhost:8088/ws-client/wsClient.html
+     * 即使打包成jar来启动，也是可以这样访问。
+     * @param args
+     */
     public static void main(String[] args) {
         //SpringApplication.run(SpringBoo3App.class, args);
 
