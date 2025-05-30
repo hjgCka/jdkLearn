@@ -6,6 +6,7 @@ import jakarta.websocket.*;
 import jakarta.websocket.server.ServerEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author hjg
  * @Date 2025-05-30 1:05
  */
+@Scope("prototype")
 @Component
 @ServerEndpoint(value = "/websocket/chat", configurator = SpringEndpointConfigurator.class)
 public class ChatAnnotation {
