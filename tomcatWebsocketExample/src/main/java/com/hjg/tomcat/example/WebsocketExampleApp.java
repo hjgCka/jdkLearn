@@ -13,7 +13,7 @@ public class WebsocketExampleApp {
 
     /**
      * 访问方式为：
-     * http://localhost:8088/ws-client/chat.xhtml
+     * http://localhost:8088/ws-client/index.xhtml
      * 原理依然是配置了资源处理器。
      * @param args
      */

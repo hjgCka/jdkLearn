@@ -16,20 +16,21 @@
  */
 package com.hjg.tomcat.example.snake;
 
-import java.awt.Color;
+import com.hjg.tomcat.example.config.SpringEndpointConfigurator;
+import jakarta.websocket.*;
+import jakarta.websocket.server.ServerEndpoint;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.websocket.OnClose;
-import jakarta.websocket.OnError;
-import jakarta.websocket.OnMessage;
-import jakarta.websocket.OnOpen;
-import jakarta.websocket.Session;
-import jakarta.websocket.server.ServerEndpoint;
-
-@ServerEndpoint(value = "/websocket/snake")
+@Scope("prototype")
+@Component
+@ServerEndpoint(value = "/websocket/snake", configurator = SpringEndpointConfigurator.class)
 public class SnakeAnnotation {
 
     public static final int PLAYFIELD_WIDTH = 640;

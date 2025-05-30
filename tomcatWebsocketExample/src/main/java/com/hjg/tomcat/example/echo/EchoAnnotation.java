@@ -16,20 +16,25 @@
  */
 package com.hjg.tomcat.example.echo;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
+import com.hjg.tomcat.example.config.SpringEndpointConfigurator;
 import jakarta.websocket.OnMessage;
 import jakarta.websocket.PongMessage;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * The three annotated echo endpoints can be used to test with Autobahn and
  * the following command "wstest -m fuzzingclient -s servers.json". See the
  * Autobahn documentation for setup and general information.
  */
-@ServerEndpoint("/websocket/echoAnnotation")
+@Scope("prototype")
+@Component
+@ServerEndpoint(value = "/websocket/echoAnnotation", configurator = SpringEndpointConfigurator.class)
 public class EchoAnnotation {
 
     @OnMessage

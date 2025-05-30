@@ -109,9 +109,9 @@ Game.initialize = function() {
         }
     }, false);
     if (window.location.protocol == 'http:') {
-        Game.connect('ws://' + window.location.host + '/examples/websocket/snake');
+        Game.connect('ws://' + window.location.host + '/websocket/snake');
     } else {
-        Game.connect('wss://' + window.location.host + '/examples/websocket/snake');
+        Game.connect('wss://' + window.location.host + '/websocket/snake');
     }
 };
 

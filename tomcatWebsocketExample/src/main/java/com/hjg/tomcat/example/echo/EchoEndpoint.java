@@ -16,15 +16,15 @@
  */
 package com.hjg.tomcat.example.echo;
 
+import jakarta.websocket.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import jakarta.websocket.Endpoint;
-import jakarta.websocket.EndpointConfig;
-import jakarta.websocket.MessageHandler;
-import jakarta.websocket.RemoteEndpoint;
-import jakarta.websocket.Session;
-
+@Scope("prototype")
+@Component
 public class EchoEndpoint extends Endpoint {
 
     @Override

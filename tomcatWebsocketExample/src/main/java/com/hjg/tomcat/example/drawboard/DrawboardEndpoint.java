@@ -20,10 +20,14 @@ import com.hjg.tomcat.example.drawboard.wsmessages.StringWebsocketMessage;
 import jakarta.websocket.*;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.io.EOFException;
 import java.io.IOException;
 
+@Scope("prototype")
+@Component
 public final class DrawboardEndpoint extends Endpoint {
 
     private static final Log log =
