@@ -8,7 +8,6 @@ import jakarta.websocket.server.ServerEndpointConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
@@ -55,8 +54,7 @@ public class WebSocketConfiguration {
         };
     }*/
 
-    //通过bean注册
-    @Bean
+    /*@Bean
     public ServerEndpointConfig echoEndpointConfig() {
         return ServerEndpointConfig.Builder.create(
                         EchoEndpoint.class,
@@ -72,35 +70,6 @@ public class WebSocketConfiguration {
                         "/websocket/drawboard")
                 .configurator(new SpringEndpointConfigurator())
                 .build();
-    }
-
-    /*@Bean
-    public ServletContextInitializer webSocketInitializer() {
-        return WebSocketConfiguration::onStartup;
     }*/
-
-    private static void onStartup(ServletContext servletContext) {
-        ServerContainer container = (ServerContainer)
-                servletContext.getAttribute("jakarta.websocket.server.ServerContainer");
-
-        ServerEndpointConfig echoConfig = ServerEndpointConfig.Builder.create(
-                        EchoEndpoint.class,
-                        "/websocket/echoProgrammatic")
-                .configurator(new SpringEndpointConfigurator())
-                .build();
-
-        ServerEndpointConfig drawConfig = ServerEndpointConfig.Builder.create(
-                        DrawboardEndpoint.class,
-                        "/websocket/drawboard")
-                .configurator(new SpringEndpointConfigurator())
-                .build();
-
-        try {
-            container.addEndpoint(echoConfig);
-            container.addEndpoint(drawConfig);
-        } catch (Exception e) {
-            logger.error("注册编程式端点时异常", e);
-        }
-    }
 
 }
