@@ -23,6 +23,11 @@ public class DelegationMain {
                 new LogginHandler(userService)
         );
 
+        /**
+         * 生成的UserService代理类实例，与实现InvocationHandler接口的类，有什么关系？
+         * 生成的类，实现了代理的接口。
+         * 但是其实现，应该是调用InvocationHandler接口的invoke方法来实现。所以能够拦截到每个方法。
+         */
         proxy.saveUser();
     }
 }
