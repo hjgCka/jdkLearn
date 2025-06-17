@@ -1,4 +1,4 @@
-package delegation;
+package advanced.delegation;
 
 /**
  * @Description

@@ -1,4 +1,4 @@
-package javabean;
+package advanced.javabean;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
