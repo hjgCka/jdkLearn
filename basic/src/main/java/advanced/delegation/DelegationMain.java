@@ -18,8 +18,14 @@ public class DelegationMain {
 
         //动态生成的代理类
         UserService proxy = (UserService) Proxy.newProxyInstance(
-                UserService.class.getClassLoader(),
-                UserService.class.getInterfaces(),
+                //UserService.class.getClassLoader(),
+                //UserService.class.getInterfaces(),
+                /**
+                 * userService.getClass().getInterfaces()返回[UserService.class]（即实现类直接实现的接口）。
+                 * 动态代理生成的类会实现UserService接口，可以安全转换为UserService。
+                 */
+                userService.getClass().getClassLoader(),
+                userService.getClass().getInterfaces(),
                 new LogginHandler(userService)
         );
 
