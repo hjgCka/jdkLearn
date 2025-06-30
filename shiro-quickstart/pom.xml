@@ -23,7 +23,7 @@
     <dependencies>
         <!--
         shiro-core依赖了commons.beanutils，并且beanutils又用了commons-loggin包中的类。
-        ConvertUtilsBean类导致的。
+        new BasicIniEnvironment这个类用到了，ConvertUtilsBean类导致的。
         这个commons-logging依赖并没有显示传递进来。所以要进行桥街配置，转到slf4j。
         -->
         <dependency>
