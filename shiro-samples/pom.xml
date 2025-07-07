@@ -16,6 +16,7 @@
         <module>samples-spring-boot</module>
         <module>samples-spring-boot-web</module>
         <module>samples-spring-boot3-web</module>
+        <module>samples-web</module>
     </modules>
 
     <properties>
@@ -29,6 +30,12 @@
         <slf4j.version>2.0.17</slf4j.version>
         <javax.annotation.api.version>1.3.2</javax.annotation.api.version>
         <spring-boot.version>2.7.18</spring-boot.version>
+        <jetty.version>9.4.57.v20241219</jetty.version>
+
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+
+        <htmlunit.version>4.11.1</htmlunit.version>
+        <taglibs.standard.version>1.2.5</taglibs.standard.version>
     </properties>
 
 </project>
