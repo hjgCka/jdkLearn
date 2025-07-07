@@ -15,6 +15,7 @@
         <module>samples-spring</module>
         <module>samples-spring-boot</module>
         <module>samples-spring-boot-web</module>
+        <module>samples-spring-boot3-web</module>
     </modules>
 
     <properties>
