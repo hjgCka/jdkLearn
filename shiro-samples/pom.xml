@@ -17,6 +17,7 @@
         <module>samples-spring-boot-web</module>
         <module>samples-spring-boot3-web</module>
         <module>samples-web</module>
+        <module>samples-web-jakarta</module>
     </modules>
 
     <properties>
@@ -33,6 +34,10 @@
         <jetty.version>9.4.57.v20241219</jetty.version>
 
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
+        <jakarta.servlet.jsp-api.version>3.1.1</jakarta.servlet.jsp-api.version>
+        <jakarta.servlet.jsp.jstl.version>3.0.1</jakarta.servlet.jsp.jstl.version>
+        <jakarta.servlet.jsp.jstl-api.version>3.0.2</jakarta.servlet.jsp.jstl-api.version>
 
         <htmlunit.version>4.11.1</htmlunit.version>
         <taglibs.standard.version>1.2.5</taglibs.standard.version>
