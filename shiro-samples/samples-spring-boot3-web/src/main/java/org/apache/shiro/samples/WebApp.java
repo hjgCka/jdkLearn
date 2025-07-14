@@ -75,7 +75,7 @@ public class WebApp {
     @Bean
     public Realm realm() {
         TextConfigurationRealm realm = new TextConfigurationRealm();
-        realm.setUserDefinitions("joe.coder=password,user\n" + "jill.coder=password,admin");
+        realm.setUserDefinitions("joe.coder=password,user\n" + "jill.coder=password,admin\n" + "ccka@163.com=123456,admin");
 
         realm.setRoleDefinitions("admin=read,write\n" + "user=read");
         realm.setCachingEnabled(true);
