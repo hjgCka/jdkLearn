@@ -1,7 +1,8 @@
-package ssia.config;
+package com.hjg.ssia.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -11,10 +12,13 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
+ * 如果不自己提供一个UserDetailsService这样的bean，spring会自行配置UserDetailsService，并生成user及其密码。
+ * 密码会打印到控制台。
  * @Description
  * @Author hjg
  * @Date 2025-08-07 0:46
  */
+@Profile("dev1")
 @Configuration
 public class ProjectConfig {
 

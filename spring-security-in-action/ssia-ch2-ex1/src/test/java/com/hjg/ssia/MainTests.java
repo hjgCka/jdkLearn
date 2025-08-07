@@ -1,4 +1,4 @@
-package ssia;
+package com.hjg.ssia;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

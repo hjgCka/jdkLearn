@@ -1,4 +1,4 @@
-package ssia;
+package com.hjg.ssia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
