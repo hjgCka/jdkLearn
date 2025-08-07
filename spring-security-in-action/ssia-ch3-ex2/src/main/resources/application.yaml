@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:ssia
+    driver-class-name: org.h2.Driver
+    username: sa
+  h2:
+    console:
+      #开启h2的控制台界面 http://localhost:8080/h2-console
+      enabled: true
+  sql:
+    init:
+      mode: always
+      # classpath只会在类路径中找到第一个文件，如果配置只在一个文件中，这比较有用
+      # classpath*: ，会在找遍所有类路径，所有匹配的资源都会被加载
+      data-locations: classpath:data.sql
+      schema-locations: classpath:schema.sql
