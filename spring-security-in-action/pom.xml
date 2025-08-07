@@ -21,6 +21,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ssia-ch2-ex1</module>
+        <module>ssia-ch3-ex1</module>
     </modules>
 
     <properties>
