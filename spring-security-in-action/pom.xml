@@ -23,6 +23,7 @@
         <module>ssia-ch2-ex1</module>
         <module>ssia-ch3-ex1</module>
         <module>ssia-ch3-ex2</module>
+        <module>ssia-ch5-ex1</module>
     </modules>
 
     <properties>
