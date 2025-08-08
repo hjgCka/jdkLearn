@@ -11,7 +11,7 @@ import java.io.IOException;
 public class AuthenticationLoggingFilter implements Filter {
 
     private final Logger logger =
-            LoggerFactory.getLogger(AuthenticationLoggingFilter.class.getName());
+            LoggerFactory.getLogger(AuthenticationLoggingFilter.class);
 
     @Override
     public void doFilter(ServletRequest request,
@@ -19,7 +19,7 @@ public class AuthenticationLoggingFilter implements Filter {
                          FilterChain filterChain) throws IOException, ServletException {
         var httpRequest = (HttpServletRequest) request;
         String requestId = httpRequest.getHeader("Request-Id");
-        logger.info("Successfully authenticated request with id " +  requestId);
+        logger.info("Successfully authenticated request with id {}", requestId);
         filterChain.doFilter(request, response);
     }
 }
