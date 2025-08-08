@@ -29,3 +29,6 @@ SecurityFilterChain提供HttpSecurity http参数，http.httpBasic方法将BasicA
 
 关于过滤器链的顺序是固定的，但是开发者可以决定在某个过滤器的前面或者后面，或者某个过滤器的位置，放置过滤器。
 它的顺序定义在SecurityWebFiltersOrder。
+
+### ssia-ch6-ex1
+通过实现AuthenticationProvider接口，实现自定义的认证逻辑。
