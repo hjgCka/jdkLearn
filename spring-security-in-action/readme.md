@@ -16,3 +16,11 @@ SecurityFilterChain提供HttpSecurity http参数，http.httpBasic方法将BasicA
 
 ### ssia-ch5-ex1
 添加自定义过滤器，在特定过滤器的前面 或 后面。
+
+### ssia-ch5-ex2
+在过滤器链的同一个位置添加多个过滤器。不会发生替代这个行为。
+此时的行为是未定义的。但是最好不要这样做。
+
+你需要知道全部的过滤器。
+
+可以禁止自行创建一个user并打印密码。

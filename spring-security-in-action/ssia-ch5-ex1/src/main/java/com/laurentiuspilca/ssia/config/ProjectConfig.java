@@ -13,6 +13,8 @@ public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        //由于没有调用httpBasic方法，所以没有添加BasicAuthenticationFilter。
+        //为了演示过滤器功能，暂时先使用permitAll()
         http.addFilterBefore(
                 new RequestValidationFilter(),
                 BasicAuthenticationFilter.class)
