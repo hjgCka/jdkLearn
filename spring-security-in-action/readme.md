@@ -40,3 +40,7 @@ SecurityContext本身又有3种模型进行管理。
 
 springboot管理的对象的线程池，比如使用@Async注解的方法，spring知道这个线程池。
 当使用它时，spring security自动将securitycontext复制到执行线程。
+
+### ssia-ch6-ex2
+使用@Async，以及自定义线程时，通过线程的包装类 或者 线程池的包装类，复制security context。
+
