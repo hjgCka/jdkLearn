@@ -44,3 +44,5 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 ### ssia-ch6-ex2
 使用@Async，以及自定义线程时，通过线程的包装类 或者 线程池的包装类，复制security context。
 
+### ssia-ch6-ex3
+定义在basic认证失败时，所执行的特定逻辑和返回的值。
