@@ -32,3 +32,11 @@ SecurityFilterChain提供HttpSecurity http参数，http.httpBasic方法将BasicA
 
 ### ssia-ch6-ex1
 通过实现AuthenticationProvider接口，实现自定义的认证逻辑。
+
+认证完成之后，会存储Authentication实例，为之后的请求可以访问。
+保存Authentication实例的对象被称为SecurityContext。
+
+SecurityContext本身又有3种模型进行管理。
+
+springboot管理的对象的线程池，比如使用@Async注解的方法，spring知道这个线程池。
+当使用它时，spring security自动将securitycontext复制到执行线程。
