@@ -23,6 +23,7 @@ public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        //这样配置，与ssia-ch6-ex2不同的是，不会出现登陆页面。
         http.httpBasic(Customizer.withDefaults());
         http.authenticationProvider(authenticationProvider);
         http.authorizeHttpRequests(c -> c.anyRequest().authenticated());
