@@ -46,3 +46,8 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 
 ### ssia-ch6-ex3
 定义在basic认证失败时，所执行的特定逻辑和返回的值。
+
+### ssia-ch6-ex4
+定义在form-based登录时，登陆成功和登录失败时执行自定义逻辑。
+
+可同时支持formLogin 和 httpBasic。
