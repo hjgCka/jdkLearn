@@ -1,3 +1,7 @@
+### basic-security
+配置了UserDetailsService和PasswordEncoder，并配置了2个用户。
+可作为其它模块的基本模块，以这个模块为起点进行代码修改。
+
 ### ssia-ch2-ex1
 演示了如何配置PasswordEncoder 和 UserDetailsService，以及通过配置SecurityFilterChain来覆盖自定义配置。
 
