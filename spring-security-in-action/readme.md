@@ -55,3 +55,8 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 定义在form-based登录时，登陆成功和登录失败时执行自定义逻辑。
 
 可同时支持formLogin 和 httpBasic。
+
+### ssia-ch7-ex1
+添加鉴权的例子，判断用户是否有对应权限才能访问endpoint。
+鉴权方法有hasAuthority hasAnyAuthority access。
+
