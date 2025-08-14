@@ -43,6 +43,21 @@ public class ProjectConfig {
                         .build()
         );
 
+        // 背后还是将角色名称，加上ROLE_前缀，设置为权限。
+        // 角色与权限的管理，即通过用户获取角色，再通过角色获取权限。这需要开发者自己设计。
+        var user1 = User.withUsername("jack")
+                .password("12345")
+                .roles("ADMIN")
+                .build();
+
+        var user2 = User.withUsername("jane")
+                .password("12345")
+                .roles("MANAGER")
+                .build();
+
+        uds.createUser(user1);
+        uds.createUser(user2);
+
         return uds;
     }
 
@@ -50,9 +65,11 @@ public class ProjectConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.httpBasic(Customizer.withDefaults());
 
-        String expression = """
+        /*String expression = """
                                 hasAuthority('read') && ! hasAuthority('delete')
-                            """;
+                            """;*/
+        //spEL可以与权限无关
+        String expression = "T(java.time.LocalTime).now().isAfter(T(java.time.LocalTime).of(12, 0))";
 
         http.authorizeHttpRequests(
                 // permitAll，任何请求都不需要认证了
@@ -60,8 +77,11 @@ public class ProjectConfig {
                 //c -> c.anyRequest().hasAuthority("read")
                 //c -> c.anyRequest().hasAnyAuthority("read", "write")
 
+                //可以通过角色来判断
+                c -> c.anyRequest().hasRole("ADMIN")
+
                 //只有当hasAuthority和hasAnyAuthority不满足时，才用access方法
-                c -> c.anyRequest().access(new WebExpressionAuthorizationManager(expression))
+                //c -> c.anyRequest().access(new WebExpressionAuthorizationManager(expression))
         );
 
         return http.build();

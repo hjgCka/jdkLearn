@@ -60,3 +60,5 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 添加鉴权的例子，判断用户是否有对应权限才能访问endpoint。
 鉴权方法有hasAuthority hasAnyAuthority access。
 
+除了直接根据权限外，还可以通过判断角色来授权。
+
