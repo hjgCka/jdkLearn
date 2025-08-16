@@ -31,6 +31,7 @@
         <module>ssia-ch6-ex4</module>
         <module>basic-security</module>
         <module>ssia-ch7-ex1</module>
+        <module>ssia-ch8-ex1</module>
     </modules>
 
     <properties>

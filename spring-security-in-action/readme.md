@@ -61,4 +61,6 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 鉴权方法有hasAuthority hasAnyAuthority access。
 
 除了直接根据权限外，还可以通过判断角色来授权。
+支持HTTP方法和ant风格的路径表达式。
+支持路径变量，并对路径变量进行正则表达式匹配。
 
