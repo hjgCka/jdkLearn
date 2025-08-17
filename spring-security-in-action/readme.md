@@ -66,3 +66,11 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 
 ### ssia-ch9-ex1
 介绍csrf，以及spring security如何防止csrf，如何安全访问post。
+
+### ssia-ch9-ex2
+设置了登录界面的默认url，登录成功之后跳转到该页面。
+
+使用thymeleaf作为前端时，如何使用csrf token来保护应用。
+
+但是当前端独立开发时，csrf token这种方式却不适合。这个解决方法在第四部分，oauth规范中解决。
+
