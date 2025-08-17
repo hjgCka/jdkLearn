@@ -64,3 +64,5 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 支持HTTP方法和ant风格的路径表达式。
 支持路径变量，并对路径变量进行正则表达式匹配。
 
+### ssia-ch9-ex1
+介绍csrf，以及spring security如何防止csrf，如何安全访问post。
