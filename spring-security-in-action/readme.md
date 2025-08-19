@@ -75,3 +75,11 @@ springboot管理的对象的线程池，比如使用@Async注解的方法，spri
 但是当前端独立开发时，csrf token这种方式却不适合。这个解决方法在第四部分，oauth规范中解决。
 
 可以为某些路径配置免受csrf保护。
+
+### ssia-ch9-ex3
+如何自定义csrf token的生成和存储。
+
+csrf token并不是访问get类型的endpoint就会生成，需要controller访问到csrf token，或者模板有访问csrf token。
+
+是一个惰性求值的机制，如果不使用就不会生成。
+
