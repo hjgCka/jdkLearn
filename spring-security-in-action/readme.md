@@ -83,3 +83,6 @@ csrf token并不是访问get类型的endpoint就会生成，需要controller访�
 
 是一个惰性求值的机制，如果不使用就不会生成。
 
+### ssia-ch10-ex1
+演示了spring security配置cors的功能。
+

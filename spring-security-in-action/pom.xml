@@ -35,6 +35,7 @@
         <module>ssia-ch9-ex1</module>
         <module>ssia-ch9-ex2</module>
         <module>ssia-ch9-ex3</module>
+        <module>ssia-ch10-ex1</module>
     </modules>
 
     <properties>
