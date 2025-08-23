@@ -86,3 +86,11 @@ csrf token并不是访问get类型的endpoint就会生成，需要controller访�
 ### ssia-ch10-ex1
 演示了spring security配置cors的功能。
 
+### ssia-ch11-ex1
+@PreAuthorize 和 @PostAuthorize 注解的例子。
+
+这2个注解，查看是否满足条件，满足就允许允许；不满足就禁止允许。它与过滤不同，它是要么有要么没有。
+
+@PreAuthorize的spel表达式可以使用hasPermission方法，这时需要我们自定义权限评估器。
+
+还有对应的@PreFilter 和 @PostFilter这2个注解，分别对入参和返回对象进行过滤。
