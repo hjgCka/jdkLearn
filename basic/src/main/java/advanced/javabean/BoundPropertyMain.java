@@ -1,6 +1,7 @@
 package advanced.javabean;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyVetoException;
 
 /**
  * 查看 https://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html
@@ -11,8 +12,8 @@ import java.beans.PropertyChangeListener;
  * @Author hjg
  * @Date 2025-06-16 22:25
  */
-public class BoundProperty {
-    public static void main(String[] args) {
+public class BoundPropertyMain {
+    public static void main(String[] args) throws PropertyVetoException {
         Car car = new Car();
 
         PropertyChangeListener pcl = evt -> {
@@ -26,8 +27,10 @@ public class BoundProperty {
         //调用setter
         car.setName("Ford");
 
-        System.out.println();
+        System.out.println("************************");
 
         car.setColor("Blue");
+
+        car.removePropertyChangeListener(pcl);
     }
 }
