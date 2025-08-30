@@ -11,7 +11,7 @@ import java.beans.PropertyDescriptor;
  * @Author hjg
  * @Date 2025-06-16 22:33
  */
-public class JavaBeanUtil {
+public class PropertyDescriptorUtil {
     public static void main(String[] args) throws IntrospectionException {
         BeanInfo beanInfo = Introspector.getBeanInfo(Car.class);
 
