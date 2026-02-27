@@ -12,6 +12,8 @@
         <module>basic</module>
         <module>shiro-quickstart</module>
         <module>shiro-samples</module>
+        <module>spring-start</module>
+        <module>aspectjDemo1</module>
     </modules>
 
     <properties>

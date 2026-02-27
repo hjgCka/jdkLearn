@@ -15,6 +15,10 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <apache-poi.version>3.9</apache-poi.version>
+        <apache-poi-ooxml.version>3.9</apache-poi-ooxml.version>
+        <apache-poi-ooxml-schemas.version>3.9</apache-poi-ooxml-schemas.version>
     </properties>
 
     <dependencies>
@@ -22,6 +26,22 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache-poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache-poi-ooxml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${apache-poi-ooxml-schemas.version}</version>
         </dependency>
     </dependencies>
 

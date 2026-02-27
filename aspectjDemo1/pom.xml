@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hjg</groupId>
+        <artifactId>jdkLearn</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>aspectjDemo1</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <aspectj.version>1.9.25.1</aspectj.version>
+    </properties>
+
+    <dependencies>
+        <!-- AspectJ核心运行时依赖 -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <!-- AspectJ织入器依赖 -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.15.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                    <complianceLevel>8</complianceLevel>
+
+                    <!--
+                    如果有第三方 jar（比如spring-aspects）中包含预定义的 AspectJ 切面（比如 Spring 的事务管理切面、缓存切面），
+                    需要通过aspectLibraries告诉 ajc：“这个 jar 里的切面也要参与我的代码织入”。
+
+                    你配置的<aspectLibrary>指向aspectjrt，其实是一个兜底 / 规范配置—— 因为aspectjrt本身几乎没有预定义切面，
+                    这个配置的实际作用是确保 ajc 能识别aspectjrt中的核心注解（比如@Aspect），
+                    即使移除这个配置，多数场景也能运行，但保留它是插件配置的最佳实践。
+                    -->
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjrt</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+
+                    <encoding>UTF-8</encoding>
+
+                    <!--lombok兼容-->
+                    <proc>none</proc>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version> <!-- 推荐稳定版本 -->
+            </plugin>
+        </plugins>
+    </build>
+</project>
