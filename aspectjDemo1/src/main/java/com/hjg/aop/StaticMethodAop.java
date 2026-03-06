@@ -13,16 +13,21 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class StaticMethodAop {
 
-    @Pointcut("execution(static * *(..)) && @annotation(com.hjg.aop.StatusCheck)")
-    public void intfStatusPostMappingPointCut(){}
+    @Pointcut("@annotation(statusCheck)")
+    public void intfStatusPostMappingPointCut(StatusCheck statusCheck){}
 
-    @Around("intfStatusPostMappingPointCut()")
-    public Object intfStatusPostMappingAroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
+    @Around("intfStatusPostMappingPointCut(statusCheck)")
+    public Object intfStatusPostMappingAroundAdvice(ProceedingJoinPoint pjp, StatusCheck statusCheck) throws Throwable {
         System.out.println("=========before=========");
 
         Object result = pjp.proceed();
         System.out.println("original result = " + result.toString());
         String newResult = result + " Jimmy";
+
+        Object[] args = pjp.getArgs();
+        int index = statusCheck.urlIndex();
+        Object param = args[index];
+        System.out.println("param = " + param);
 
         System.out.println("=========after=========");
         return newResult;

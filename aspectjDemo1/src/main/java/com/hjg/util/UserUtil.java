@@ -9,7 +9,7 @@ import com.hjg.aop.StatusCheck;
  */
 public class UserUtil {
 
-    @StatusCheck
+    @StatusCheck(urlIndex = 0)
     public static String getNameById(String id) {
         String name = "Jack";
         return name;

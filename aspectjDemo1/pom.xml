@@ -28,11 +28,11 @@
         </dependency>
 
         <!-- AspectJ织入器依赖 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -61,12 +61,12 @@
                     这个配置的实际作用是确保 ajc 能识别aspectjrt中的核心注解（比如@Aspect），
                     即使移除这个配置，多数场景也能运行，但保留它是插件配置的最佳实践。
                     -->
-                    <aspectLibraries>
+                    <!--<aspectLibraries>
                         <aspectLibrary>
                             <groupId>org.aspectj</groupId>
                             <artifactId>aspectjrt</artifactId>
                         </aspectLibrary>
-                    </aspectLibraries>
+                    </aspectLibraries>-->
 
                     <encoding>UTF-8</encoding>
 
@@ -85,11 +85,11 @@
                 </executions>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version> <!-- 推荐稳定版本 -->
-            </plugin>
+                <version>3.1.0</version> &lt;!&ndash; 推荐稳定版本 &ndash;&gt;
+            </plugin>-->
         </plugins>
     </build>
 </project>
