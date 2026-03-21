@@ -116,7 +116,8 @@
             <groupId>org.apache.shiro.integrationtests</groupId>
             <artifactId>shiro-its-support</artifactId>
             <scope>test</scope>
-            <version>${shiro.version}</version>
+            <!--从 ${shiro.version} 2.0.4 升级到1.8.0-->
+            <version>1.8.0</version>
         </dependency>
     </dependencies>
 
