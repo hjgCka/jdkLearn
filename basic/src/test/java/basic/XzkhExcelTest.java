@@ -12,6 +12,11 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * @Description
@@ -209,5 +214,54 @@ public class XzkhExcelTest {
         workbook.write(outputStream);
         outputStream.flush();
         outputStream.close();
+    }
+
+    @Test
+    public void readExcel() throws IOException {
+        String orgFile = "D:/sxgk/三峡高科开发.xlsx";
+
+        Path path = Paths.get(orgFile);
+
+        try (InputStream inputStream = Files.newInputStream(path)) {
+            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+
+            DataFormatter formatter = new DataFormatter();
+            Sheet sheet = workbook.getSheet("Sheet1");
+
+            int startIndex = 1;
+
+            Map<String, List<String>> map = new TreeMap<>();
+
+            for (int i=startIndex; i<=sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                String tableName = formatter.formatCellValue(row.getCell(4));
+                if ("SF_TOOLS".equals(tableName)) {
+                    String code = formatter.formatCellValue(row.getCell(7));
+                    String fileName = formatter.formatCellValue(row.getCell(0));
+                    if (map.get(code) == null) {
+                        List<String> list = new LinkedList<>();
+                        list.add(fileName);
+
+                        map.put(code, list);
+                    } else {
+                        List<String> list = map.get(code);
+                        list.add(fileName);
+                    }
+                }
+            }
+
+            // 打印结果
+            String str = map.entrySet().stream().map(entry -> {
+                String code = entry.getKey();
+                List<String> list = entry.getValue();
+                StringBuilder sb = new StringBuilder();
+                sb.append(code).append("（")
+                        .append(list.stream().collect(Collectors.joining("、")))
+                        .append("）");
+                return sb.toString();
+            }).collect(Collectors.joining("，\n"));
+
+            System.out.println(str);
+        }
     }
 }

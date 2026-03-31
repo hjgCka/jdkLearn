@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <aspectj.version>1.9.25.1</aspectj.version>
+        <aspectj-maven-plugin.version>1.16.0</aspectj-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -26,13 +27,6 @@
             <artifactId>aspectjrt</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
-
-        <!-- AspectJ织入器依赖 -->
-        <!--<dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>-->
     </dependencies>
 
     <build>
@@ -40,7 +34,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
-                <version>1.15.0</version>
+                <version>${aspectj-maven-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
@@ -53,30 +47,23 @@
                     <target>8</target>
                     <complianceLevel>8</complianceLevel>
 
-                    <!--
-                    如果有第三方 jar（比如spring-aspects）中包含预定义的 AspectJ 切面（比如 Spring 的事务管理切面、缓存切面），
-                    需要通过aspectLibraries告诉 ajc：“这个 jar 里的切面也要参与我的代码织入”。
-
-                    你配置的<aspectLibrary>指向aspectjrt，其实是一个兜底 / 规范配置—— 因为aspectjrt本身几乎没有预定义切面，
-                    这个配置的实际作用是确保 ajc 能识别aspectjrt中的核心注解（比如@Aspect），
-                    即使移除这个配置，多数场景也能运行，但保留它是插件配置的最佳实践。
-                    -->
-                    <!--<aspectLibraries>
-                        <aspectLibrary>
-                            <groupId>org.aspectj</groupId>
-                            <artifactId>aspectjrt</artifactId>
-                        </aspectLibrary>
-                    </aspectLibraries>-->
-
                     <encoding>UTF-8</encoding>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <verbose>true</verbose>
 
-                    <!--lombok兼容-->
-                    <proc>none</proc>
+                    <weaveDirectories>
+                        <!--待增强的class文件目录-->
+                        <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
+                    </weaveDirectories>
+                    <!--没有源码(.java文件)需要编译-->
+                    <sources/>
+                    <!--没有源码时也要进行编译-->
+                    <forceAjcCompile>true</forceAjcCompile>
                 </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>compile</phase>
+                        <phase>process-classes</phase>
                         <goals>
                             <goal>compile</goal>
                             <goal>test-compile</goal>
@@ -84,12 +71,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version> &lt;!&ndash; 推荐稳定版本 &ndash;&gt;
-            </plugin>-->
         </plugins>
     </build>
 </project>
