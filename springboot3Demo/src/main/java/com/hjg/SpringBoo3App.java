@@ -35,7 +35,7 @@ public class SpringBoo3App {
 
         //可以换这种方式启动，这是可以设置SpringApplication的一些属性
         SpringApplication application = new SpringApplication(SpringBoo3App.class);
-        application.setBannerMode(Banner.Mode.OFF);
+        application.setBannerMode(Banner.Mode.CONSOLE);
         // application.run是一个阻塞方法，JVM关闭前不会执行下面的语句
         ApplicationContext applicationContext = application.run(args);
 

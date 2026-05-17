@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+
+            <!--应该使用JSON Template Layout 用于生产环境。-->
+            <!--<JsonLayout compact="true" eventEol="true">
+                <KeyValuePair key="additionalField1" value="constant value"/>
+            </JsonLayout>-->
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!--如果不使用additivity=false，BarCaller这个logger还会从ROOT继承另一个appender-->
+        <Logger name="com.hjg.foo.BarCaller" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
